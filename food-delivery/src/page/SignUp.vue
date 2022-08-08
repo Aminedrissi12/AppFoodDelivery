@@ -1,0 +1,38 @@
+<template>
+  <div class="log-in">
+    <div class="row">
+      <!-- ////////////////////////////////lift content///////////////////////////// -->
+      <layoutSignUp />
+      <!-- //////////rigth content //////////////////////////////////////////////////-->
+      <rigthContent />
+    </div>
+  </div>
+</template>
+//////////////////////////////////////////script///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<script>
+import layoutSignUp from '@/components/layout/login and signup/layoutSignUp.vue'
+import rigthContent from '@/components/layout/login and signup/rigthContent.vue'
+export default {
+  components: {
+    layoutSignUp,
+    rigthContent,
+  },
+}
+</script>
+///////////////////////////////////////////style///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<style scoped>
+.log-in {
+  margin: 0 0 0 0;
+  background-color: var(--bag-color-with);
+  width: 100%;
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+</style>

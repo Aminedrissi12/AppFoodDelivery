@@ -1,0 +1,139 @@
+/* fonts family = Nunito */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --icon-color: #4e60ff;
+  /* ---------------------- */
+  --bag-color-with: #fff;
+  --bag-color-blue-log: #697bff;
+  /* ----------------------------- */
+  --btn-navbar-color: #83859c;
+  --btn-bgcolr-hover: #4e60ff;
+  --btn-bg-color: #4e60ff;
+  --btn-colo-text: #fff;
+  --btn-bgcolor: #e6e6ec;
+  --btn-color: #4e60ff;
+  /* ------------------------------ */
+  --text-color-span: #4e60ff;
+  --text-color: #2b2b43;
+  --header-colo: #fff;
+  /* ------------------------------- */
+  --colo-h4: #83859c;
+  --colo-h1: #fff;
+  /* ------------------------------- */
+  --bordder-color-1: #4e60ff;
+  --bordder-color-2: #c7c8d2;
+  /* ------------------------------- */
+  --font-family: 'Nunito', sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 62.5%;
+}
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+#APP {
+  display: flex;
+  flex-direction: column;
+}
+.main-Nave-bar {
+  height: 8rem;
+}
+
+.icon-Navbar svg,
+.icon-cart svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  padding: 1rem;
+  background-color: var(--btn-bgcolor);
+  border-radius: 1.6rem;
+}
+
+.nav-fex {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bag-color-with);
+}
+
+/* /////////////media/////////////// */
+@media (max-width: 37.5em) {
+  html {
+    font-size: 40%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media (min-width: 37.5em) {
+  /*   */
+  html {
+    font-size: 40%;
+  }
+  .content {
+    margin: 0 0.2rem auto;
+    padding: 0 0.2rem;
+  }
+  .row-nave-bare {
+    margin: 0.9rem 0rem;
+    padding: 0 0.4rem;
+  }
+  .side-Bar-row {
+    padding: 3rem 2rem 0 2rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+@media (min-width: 46.87em) {
+  html {
+    font-size: 45%;
+  }
+  .row-nave-bare {
+    margin: 0.9rem 0.5rem;
+    padding: 0 0.4rem;
+  }
+  .side-Bar-row {
+    padding: 3rem 6rem 0 6rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 62em) {
+  html {
+    font-size: 50%;
+  }
+  .row-nave-bare {
+    margin: 0.9rem 0.5rem;
+    padding: 0 0.4rem;
+  }
+  .side-Bar-row {
+    padding: 3rem 4rem 0 4rem;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+  .content {
+    margin: 0 7.1rem auto;
+    padding: 0 1.5rem;
+  }
+}

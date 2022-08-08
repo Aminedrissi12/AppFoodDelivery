@@ -1,0 +1,145 @@
+nav {
+  border-bottom: 1px solid #edeef2;
+}
+.row-nave-bare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.9rem 7.1rem;
+  padding: 0 1.5rem;
+}
+.col:not(:last-child) {
+  padding-right: 15px;
+}
+.cl-0 {
+  display: flex;
+  align-items: center;
+}
+.cl-1 {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+.cl-1 a {
+  color: #2b2b43;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 0 1.4rem;
+}
+.cl-1 .router-link-active {
+  color: var(--bordder-color-1);
+}
+
+.cl-span {
+  border-left: 2px solid #edeef2;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  margin-left: 0.6rem;
+  margin-right: 0.6rem;
+  height: 3rem;
+}
+
+.col input {
+  background: #edeef2;
+  width: 22.4rem;
+  height: 4rem;
+  border-radius: 1.2rem;
+  padding-inline: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  transition: 0.4s;
+}
+.col input:focus {
+  outline: none;
+  width: 22.7rem;
+}
+.iconCart svg {
+  color: var(--icon-color);
+}
+.iconCart {
+  background-color: var(--btn-bgcolor);
+  border-radius: 16px;
+  color: var(--icon-color);
+}
+
+.iconCart svg:hover {
+  background-color: var(--btn-bgcolr-hover);
+  color: #edeef2;
+}
+
+.icon-cart {
+  padding-right: 1rem;
+}
+
+a:link {
+  text-decoration: none;
+}
+.col-2 {
+  display: flex;
+  align-items: center;
+}
+
+.icon-Navbar {
+  margin-left: 0.4rem;
+}
+
+.icon-Navbar svg {
+  margin-left: 0.3rem;
+  color: var(--btn-navbar-color);
+}
+/*------- side-nave-bare----- */
+
+.side-Bar-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-top: 7.6rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--bag-color-with);
+  padding: 3rem 2rem 0 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  border-radius: 1.6rem 0 0 1.6rem;
+  z-index: 100;
+}
+.side-Bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: stretch;
+}
+.side-Bar-col a {
+  border: 0.2rem solid var(--bordder-color-2);
+  margin-bottom: 0.9rem;
+  border-radius: 1.6rem;
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.3);
+}
+.bac-side-Bare {
+  background-color: rgba(0, 0, 0, 0.6);
+  margin-top: 7.6rem;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  backdrop-filter: blur(0.2rem);
+  z-index: 50;
+}
+
+.side-Bar-col svg {
+  margin-right: 0.7rem;
+  color: var(--icon-color);
+}
+
+.side-Bar-col span {
+  color: var(--text-color);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+.side-Bar-col .router-link-active {
+  border: 0.2rem solid var(--bordder-color-1);
+}
