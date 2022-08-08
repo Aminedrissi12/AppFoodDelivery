@@ -7,6 +7,7 @@ import Profile from '@/page/Profile.vue'
 import MyCart from '@/page/MyCart.vue'
 import login from '@/page/logIn.vue'
 import SignUp from '@/page/SignUp.vue'
+import ForgotPassword from '@/page/forgotPassword.vue'
 
 const routes = [
   {
@@ -69,6 +70,20 @@ const routes = [
     path: '/SignUp',
     name: 'SignUp',
     component: SignUp,
+    // anybody can see a SignUp
+    meta: { requiresAuth: false },
+    beforeEnter: () => {
+      const token = localStorage._tk
+      // check if token is true
+      if (token) {
+        return { path: '/' }
+      } else return true
+    },
+  },
+  {
+    path: '/Forgot-Password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
     // anybody can see a SignUp
     meta: { requiresAuth: false },
     beforeEnter: () => {

@@ -2,7 +2,7 @@
   <div class="log-in">
     <div class="row">
       <!-- ////////////////////////////////lift content///////////////////////////// -->
-      <layoutLogin />
+      <layoutForgot />
       <!-- //////////rigth content //////////////////////////////////////////////////-->
       <rigthContent />
     </div>
@@ -10,14 +10,14 @@
 </template>
 //////////////////////////////////////////script/////////////////////////////////////////
 <script>
-import layoutLogin from '@/components/layout/login and signup/layoutLogin.vue'
+import layoutForgot from '@/components/layout/login and signup/layoutForgot.vue'
 import rigthContent from '@/components/layout/login and signup/rigthContent.vue'
 export default {
   data() {
     return {}
   },
   components: {
-    layoutLogin,
+    layoutForgot,
     rigthContent,
   },
 }

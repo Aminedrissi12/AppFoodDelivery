@@ -5,47 +5,37 @@
       <AuthError :errors="errors" @close-po="closePo" />
     </div>
     <div class="colm-1">
-      <!-- -----------------------------logo------------------------------------------ -->
+      <!-- -----------------------------Forgot------------------------------------------ -->
       <div class="colm-1-logo">
         <Logo />
       </div>
-      <!-- ----------------------colm-login-text------------------------------------- -->
+      <!-- ----------------------colm-Forgot Password------------------------------------- -->
       <div class="colm-login">
         <div class="colm-login-text">
-          <h1>Login</h1>
+          <div class="BackTo" @click="GoToLogin">
+            <mdicon name="less-than" class="icon" />
+            <span>Back To Login</span>
+          </div>
+          <h1>Forgot Password</h1>
           <p>
-            Sign in with your data that you entered during your registration.
+            Enter the email associated with your account and we’ll send an email
+            with instructions to reset your password.
           </p>
         </div>
         <!-- ------------------------colm-form------------------------------------ -->
-        <form class="colm-form" @submit.prevent="Login">
+        <form class="colm-form" @submit.prevent="SendInstructions">
           <div>
             <label for="email">Email</label>
             <input
-              v-model="auth.email"
+              v-model="email"
               class="input"
               type="email"
               name="email"
               placeholder="name@example.com"
             />
           </div>
-          <div>
-            <label for="password">Password</label>
-            <input
-              v-model="auth.password"
-              class="input"
-              type="password"
-              name="password"
-              placeholder="min. 8 characters"
-            />
-          </div>
-          <div class="checkbox">
-            <input :v-model="checkbox" type="checkbox" name="checkbox" />
-            <label for="checkbox">Keep me logged in</label>
-          </div>
           <div class="colm-btn">
-            <button class="btn-login">Login</button>
-            <span @click="GoToForgot">Forgot password</span>
+            <button class="btn-login">Send instructions</button>
           </div>
         </form>
       </div>
@@ -58,67 +48,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import AuthError from './../../errors/euthError.vue'
 import Logo from './../logo/logo.vue'
-import { validation } from './../../../js/validationForm'
+
 export default {
+  data() {
+    return {
+      errors: [],
+      email: null,
+    }
+  },
   components: {
     AuthError,
     Logo,
   },
-  data() {
-    return {
-      errors: [],
-      checkbox: null,
-      auth: {
-        email: '',
-        password: '',
-      },
-    }
-  },
-  computed: {
-    ...mapGetters({
-      error: 'error',
-    }),
-  },
   methods: {
-    async Login() {
-      this.errors = []
-      // //////////////////////////////////////// //
-
-      let vlid = new validation(this.auth.email).validEmail()
-
-      if (!this.auth.email) {
-        this.errors.push('email required.')
-      } else if (!vlid) {
-        this.errors.push('invaled email.')
-      }
-      // ////////////////////////////////////////// //
-      if (this.auth.password.split(' ')[0] === '') {
-        this.errors.push('password required.')
-      } else if (this.auth.password.split('').length < 7) {
-        this.errors.push('invaled password (min 8 characters)')
-      }
-      // ////////////////////////////////////////// //
-      if (this.auth.email && this.auth.password && !this.errors.length) {
-        await this.$store.dispatch('loginn', this.auth)
-
-        if (this.error) {
-          this.errors.push(this.error)
-        } else {
-          this.$router.push({ path: '/' })
-        }
-      }
-    },
     GoToSinUp() {
       this.$router.push({ path: '/signup' })
     },
-    GoToForgot() {
-      this.$router.push({ path: '/Forgot-Password' })
-    },
-    closePo() {
-      this.errors = []
+    GoToLogin() {
+      this.$router.push({ path: '/login' })
     },
   },
 }
@@ -135,26 +84,40 @@ export default {
   flex: 1.12;
 }
 
-/* .colm-1 {
-  width: 35rem;
-  height: 95%;
-} */
 .colm-1 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: 80%;
   flex: 1;
 }
 /* -------------------------colm-1-logo---------------------- */
 .colm-1-logo {
   cursor: pointer;
 }
+/* ---------------------------------------------------------- */
+.BackTo {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.BackTo > .icon {
+  margin-right: 1rem;
+  color: var(--colo-h4);
+}
+.BackTo span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--colo-h4);
+}
+
 /* ------------------colm-login-text------------------------- */
 .colm-login-text {
   margin-bottom: 2rem;
 }
 .colm-login-text h1 {
-  font-size: 5rem;
   margin-bottom: 1rem;
 }
 .colm-login-text p {
@@ -209,7 +172,7 @@ export default {
   margin-top: 1.5rem;
   cursor: pointer;
 }
-/* ----------------------------colm-signUp---------------------------- */
+/* ----------------------------Send instructions---------------------------- */
 .colm-signUp {
   font-size: 1.5rem;
   text-align: center;
@@ -236,5 +199,13 @@ export default {
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media (min-width: 1200px) {
+}
+</style>
+
+// Global Style ////////////////////
+<style>
+.BackTo > .icon > svg {
+  width: 2.5rem;
+  height: 3rem;
 }
 </style>
