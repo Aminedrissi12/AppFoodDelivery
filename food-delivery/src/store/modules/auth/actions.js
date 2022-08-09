@@ -8,6 +8,7 @@ export default {
         password: paylode.password,
       })
       .then(({ data }) => {
+        console.log(data)
         context.commit('logUser', data)
       })
       .catch((err) => {

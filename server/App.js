@@ -1,5 +1,6 @@
 const Express = require('express')
 const app = Express()
+const cors = require('cors')
 const RS = require('./Router/RouterRestaurants')
 const NewUser = require('./Router/RouterUser')
 const Items = require('./Router/RouterItems')
@@ -8,6 +9,7 @@ const controllerError = require('./Controller/controllerError')
 
 //Middleware /////////////////////////////////////////////////////////////////////
 app.use(Express.json())
+app.use(cors())
 // ///////Router////////
 app.use('/api/restaurants', RS)
 app.use('/api/new-user', NewUser)
