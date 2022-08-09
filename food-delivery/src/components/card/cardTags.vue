@@ -29,11 +29,12 @@ export default {
   align-items: center;
 
   padding: 1rem 5.5rem;
-  border: 0.2rem solid var(--bordder-color-2);
+  border: 0.3rem solid var(--bordder-color-2);
   border-radius: 1rem;
 }
 .Tag span {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 .Tag img {
   margin-bottom: 1rem;
@@ -44,17 +45,17 @@ export default {
 
 .Tag:hover {
   background-color: var(--btn-bgcolor);
-  border: 0.2rem solid var(--bordder-color-1);
+  border: 0.3rem solid var(--bordder-color-1);
 }
 /* active */
 .Tag:active {
   background-color: var(--btn-bgcolor);
-  border: 0.2rem solid var(--bordder-color-1);
+  border: 0.3rem solid var(--bordder-color-1);
 }
 
 .styleActive {
   background-color: var(--btn-bgcolor);
-  border: 0.2rem solid var(--bordder-color-1);
+  border: 0.3rem solid var(--bordder-color-1);
 }
 
 .styleActive span {

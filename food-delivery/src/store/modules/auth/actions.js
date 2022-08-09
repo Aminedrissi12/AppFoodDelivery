@@ -8,7 +8,6 @@ export default {
         password: paylode.password,
       })
       .then(({ data }) => {
-        console.log(data)
         context.commit('logUser', data)
       })
       .catch((err) => {
@@ -17,8 +16,6 @@ export default {
   },
   // ///////////////////////////////////////
   async Signup(context, paylode) {
-    // console.log(paylode.fullName)
-
     await axios
       .post('http://localhost:8081/api/new-user/sign-up', {
         FullName: paylode.fullName,

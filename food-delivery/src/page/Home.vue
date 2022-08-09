@@ -24,15 +24,22 @@
     <!------------- Nearby restaurants --------->
     <div class="card_Restaurents">
       <h2>Nearby restaurants</h2>
-      <layoutCard />
+      <div class="restaurant">
+        <cardRestaurant />
+        <cardRestaurant />
+        <cardRestaurant />
+        <cardRestaurant />
+        <cardRestaurant />
+        <cardRestaurant />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import layoutDeals from '@/components/layout/layoutDeals.vue'
-import layoutTags from '@/components/layout/layoutTags.vue'
-import layoutCard from '@/components/layout/layoutCardRest.vue'
+import layoutDeals from '@/components/card/cardDeals.vue'
+import layoutTags from '@/components/card/cardTags.vue'
+import CardRestaurant from '@/components/card/cardRestaurant.vue'
 // /////////////////////////////////////////////////
 import BigBur from '@/assets/imagData/BigBurgers1.png'
 import dessert from '@/assets/imagData/dessert1.png'
@@ -47,7 +54,7 @@ export default {
   components: {
     layoutDeals,
     layoutTags,
-    layoutCard,
+    CardRestaurant,
   },
   data() {
     return {
@@ -114,5 +121,11 @@ export default {
 }
 .card_Restaurents {
   margin-top: 3.5rem;
+}
+.restaurant {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>
