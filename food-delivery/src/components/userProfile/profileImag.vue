@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       userImag:
-        'https://fooddelivery.saasdesign.io/assets/content/account-avatar.png',
+        'https://lh3.googleusercontent.com/a-/AFdZucr1XZqzQ1_ahO93E3MiqPYYsT-lcXd1JCjejIVjXg=s378-p-rw-no',
     }
   },
 }

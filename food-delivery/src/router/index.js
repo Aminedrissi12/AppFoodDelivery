@@ -9,6 +9,12 @@ import login from '@/page/logIn.vue'
 import SignUp from '@/page/SignUp.vue'
 import ForgotPassword from '@/page/forgotPassword.vue'
 
+//////////////////// children Profile /////////////////
+import Account from '@/components/routerComponent/profileRoute/account.vue'
+import Address from '@/components/routerComponent/profileRoute/address.vue'
+import Payment from '@/components/routerComponent/profileRoute/PaymentMethode.vue'
+import Security from '@/components/routerComponent/profileRoute/security.vue'
+
 const routes = [
   {
     path: '/',
@@ -40,10 +46,33 @@ const routes = [
   },
   {
     path: '/Profile',
+    redirect: '/Profile/account',
     name: 'Profile',
     component: Profile,
     // only authenticated users can see Profile
     meta: { requiresAuth: true },
+    children: [
+      {
+        path: '/Profile/account',
+        name: 'Account',
+        component: Account,
+      },
+      {
+        path: '/Profile/address',
+        name: 'Address',
+        component: Address,
+      },
+      {
+        path: '/Profile/payment',
+        name: 'Payment',
+        component: Payment,
+      },
+      {
+        path: '/Profile/security',
+        name: 'Security',
+        component: Security,
+      },
+    ],
   },
   {
     path: '/MyCart',

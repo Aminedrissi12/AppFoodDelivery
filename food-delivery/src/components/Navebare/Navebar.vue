@@ -105,7 +105,7 @@ export default {
     checkScreen() {
       this.windowWidth = window.innerWidth
 
-      if (this.windowWidth <= 962) {
+      if (this.windowWidth <= 787) {
         this.mobilNAv = true
         return
       }
@@ -116,7 +116,7 @@ export default {
     checksherch() {
       this.windowWidth = window.innerWidth
 
-      if (this.windowWidth <= 653) {
+      if (this.windowWidth <= 467) {
         this.mobilNavSherch = false
         return
       }
