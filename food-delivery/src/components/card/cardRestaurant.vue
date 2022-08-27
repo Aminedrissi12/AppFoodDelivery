@@ -103,3 +103,41 @@ export default {
   color: #c7c8d2;
 }
 </style>
+
+//
+///////////////////////////////////media/////////////////////////////////////////////
+
+<style scoped>
+@media (max-width: 37.5em) {
+  .card {
+    width: 100%;
+    margin: 2rem 0;
+    border: 1px solid #edeef2;
+    border-radius: 16px;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+  .card {
+    width: 48%;
+    margin: 2rem 0;
+    border: 1px solid #edeef2;
+    border-radius: 16px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+@media screen and (min-width: 46.87em) and (max-width: 62em) {
+  .card {
+    width: 47%;
+    margin: 2rem 0;
+    border: 1px solid #edeef2;
+    border-radius: 16px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 62em) and (max-width: 75em) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 75em) {
+}
+</style>

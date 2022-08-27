@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!--------------- layoutDeals --------------->
-    <div class="layoutDeals">
-      <layoutDeals
+    <!--------------- cardDeals --------------->
+    <div class="cardDeals">
+      <cardDeals
         v-for="DealsData in DealsDatas"
         :key="DealsData.id"
         :id="DealsData.id"
@@ -14,7 +14,7 @@
     </div>
     <!-------------- layoutTags ---------------->
     <div class="TagsData">
-      <layoutTags
+      <cardTags
         v-for="TagData in TagsData"
         :key="TagData.name"
         :name="TagData.name"
@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import layoutDeals from '@/components/card/cardDeals.vue'
-import layoutTags from '@/components/card/cardTags.vue'
+import cardDeals from '@/components/card/cardDeals.vue'
+import cardTags from '@/components/card/cardTags.vue'
 import CardRestaurant from '@/components/card/cardRestaurant.vue'
 // /////////////////////////////////////////////////
 import BigBur from '@/assets/imagData/BigBurgers1.png'
@@ -52,8 +52,8 @@ import Vegen from '@/assets/imagData/broccoli.png'
 import Desserts from '@/assets/imagData/cake.png'
 export default {
   components: {
-    layoutDeals,
-    layoutTags,
+    cardDeals,
+    cardTags,
     CardRestaurant,
   },
   data() {
@@ -106,18 +106,19 @@ export default {
 </script>
 
 <style scoped>
-.layoutDeals {
+.cardDeals {
   margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-grow: 2;
 }
 .TagsData {
   margin-top: 3rem;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 .card_Restaurents {
   margin-top: 3.5rem;
@@ -127,5 +128,53 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+</style>
+
+//
+///////////////////////////////////media/////////////////////////////////////////////
+
+<style scoped>
+@media (max-width: 37.5em) {
+  .cardDeals {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .TagsData {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    gap: 3.6rem;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+  .TagsData {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 3.25rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+@media screen and (min-width: 46.87em) and (max-width: 62em) {
+  .TagsData {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 2rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 62em) and (max-width: 75em) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 75em) {
 }
 </style>

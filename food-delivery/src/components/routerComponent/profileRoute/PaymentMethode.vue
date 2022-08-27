@@ -37,7 +37,6 @@ export default {
   border: 2px solid var(--bordder-color-2);
   border-radius: 1.6rem;
   padding: 2rem 1.5rem;
-  height: 74vh;
 }
 .creditCard {
   display: flex;

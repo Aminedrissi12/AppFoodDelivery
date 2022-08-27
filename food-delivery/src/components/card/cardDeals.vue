@@ -4,18 +4,22 @@
       <div class="col-layout">
         <img :src="image" alt="" />
       </div>
+      <!-- ---- -->
       <div class="col-1-layout">
-        <h2>{{ nameFood }}</h2>
-        <div class="col-1-row">
-          <span class="col-1-row-span" :class="{ colorGL: iSactive }">
-            {{ discount }}</span
-          >
-          <span class="col-1-row-span" :class="{ colorGL: iSactive }">
-            % OFF</span
-          >
+        <div>
+          <h2>{{ nameFood }}</h2>
+          <div class="col-1-row">
+            <span class="col-1-row-span" :class="{ colorGL: iSactive }">
+              {{ discount }}</span
+            >
+            <span class="col-1-row-span" :class="{ colorGL: iSactive }">
+              % OFF</span
+            >
+          </div>
         </div>
         <h4>{{ Type_of_food }}</h4>
       </div>
+      <!-- ---- -->
     </div>
   </div>
 </template>
@@ -59,7 +63,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* flex: 1; */
   padding: 2rem 0 2rem 2rem;
 }
 .col-layout img {
@@ -87,5 +90,73 @@ export default {
 }
 .colorGL {
   color: #fd6d22;
+}
+</style>
+
+//
+///////////////////////////////////media/////////////////////////////////////////////
+
+<style scoped>
+@media (max-width: 37.5em) {
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 3rem;
+    height: 28vh;
+  }
+  .col-1-layout {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    padding: 0;
+  }
+  .col-1-row span {
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 3rem;
+    height: 69%;
+  }
+  .col-1-layout {
+    display: flex;
+    flex-direction: row;
+    width: 78%;
+    padding: 0;
+  }
+  .col-1-row span {
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+@media screen and (min-width: 46.87em) and (max-width: 62em) {
+  .row {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 3rem;
+    height: 69%;
+  }
+  .col-1-layout {
+    display: flex;
+    flex-direction: row;
+    width: 78%;
+    padding: 0;
+  }
+  .col-1-row span {
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 62em) and (max-width: 75em) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 75em) {
 }
 </style>

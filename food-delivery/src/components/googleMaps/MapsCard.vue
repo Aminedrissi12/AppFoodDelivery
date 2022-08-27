@@ -11,6 +11,7 @@
         border-radius: 1.6rem;
         font-size: 9px;
         line-height: 13px;
+        z-index: 0;
       "
     >
       <GMapCluster>

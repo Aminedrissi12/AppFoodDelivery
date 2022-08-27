@@ -22,7 +22,7 @@ createApp(App)
   .use(VueGoogleMaps, {
     load: {
       // enter your key google cloude ipa
-      key: '',
+      key: 'AIzaSyAPrYfUMqMO2GMAx98PgLhLCYMi0MdasNY',
     },
   })
   .mount('#app')

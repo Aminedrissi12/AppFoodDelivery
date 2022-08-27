@@ -27,10 +27,10 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  padding: 1rem 5.5rem;
-  border: 0.3rem solid var(--bordder-color-2);
+  padding: 1rem;
+  border: 0.25rem solid var(--bordder-color-2);
   border-radius: 1rem;
+  width: 10%;
 }
 .Tag span {
   font-size: 1.4rem;
@@ -43,23 +43,47 @@ export default {
 }
 /* hove */
 
-.Tag:hover {
-  background-color: var(--btn-bgcolor);
-  border: 0.3rem solid var(--bordder-color-1);
-}
-/* active */
-.Tag:active {
-  background-color: var(--btn-bgcolor);
-  border: 0.3rem solid var(--bordder-color-1);
-}
-
+.Tag:hover,
+.Tag:active,
 .styleActive {
   background-color: var(--btn-bgcolor);
-  border: 0.3rem solid var(--bordder-color-1);
+  border: 0.25rem solid var(--bordder-color-1);
 }
 
 .styleActive span {
   color: var(--text-color-span);
   font-weight: 500;
+}
+</style>
+
+//
+///////////////////////////////////media/////////////////////////////////////////////
+
+<style scoped>
+@media (max-width: 37.5em) {
+  .Tag {
+    padding: 1rem;
+    width: 20%;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+  .Tag {
+    padding: 1rem;
+    width: 25%;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+@media screen and (min-width: 46.87em) and (max-width: 62em) {
+  .Tag {
+    padding: 1rem;
+    width: 10%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 62em) and (max-width: 75em) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 75em) {
 }
 </style>

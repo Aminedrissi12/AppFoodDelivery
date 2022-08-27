@@ -55,7 +55,6 @@ export default {}
   border: 2px solid var(--bordder-color-2);
   border-radius: 1.6rem;
   padding: 2rem 1.5rem;
-  height: 74vh;
 }
 /* _____________________ */
 .Clss__security-input {
@@ -115,6 +114,7 @@ export default {}
 .Clss__security-password_btn {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 15rem;
 }
 </style>
 // ////////////////////////////////////////////////////////////////////// //

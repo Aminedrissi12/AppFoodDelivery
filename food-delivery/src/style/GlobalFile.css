@@ -84,6 +84,7 @@ h4 {
   left: 0;
   right: 0;
   background-color: var(--bag-color-with);
+  z-index: 100;
 }
 
 /* ////////////////////////////////////////////////////////////////////////media/////////////////////////////////////////////*/
@@ -164,3 +165,20 @@ h4 {
     padding: 0 1.5rem;
   }
 }
+
+/* ///////////////////////////////////media///////////////////////////////////////////// */
+/* @media (max-width: 37.5em) {
+} */
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+/* @media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+} */
+/* Medium devices (landscape tablets, 768px and up (46.87) */
+/* @media screen and (min-width: 46.87em) and (max-width: 62em) {
+  
+} */
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media screen and (min-width: 62em) and (max-width: 75em) {
+} */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media screen and (min-width: 75em) {
+} */
