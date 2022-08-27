@@ -102,7 +102,7 @@ export default {
     display: flex;
     flex-direction: column-reverse;
     padding-top: 3rem;
-    height: 28vh;
+    height: 25rem;
   }
   .col-1-layout {
     display: flex;
@@ -121,7 +121,7 @@ export default {
     display: flex;
     flex-direction: column-reverse;
     padding-top: 3rem;
-    height: 69%;
+    height: 26rem;
   }
   .col-1-layout {
     display: flex;
