@@ -1,12 +1,21 @@
 import axios from 'axios'
-
+// http://localhost:8081
 export default {
   async loginn(context, paylode) {
     await axios
-      .post('http://localhost:8081/api/new-user/login', {
-        email: paylode.email,
-        password: paylode.password,
-      })
+      .post(
+        'https://fooddeliveryservenodejs.herokuapp.com/api/new-user/login',
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+        },
+        {
+          email: paylode.email,
+          password: paylode.password,
+        }
+      )
       .then(({ data }) => {
         context.commit('logUser', data)
       })
@@ -17,12 +26,15 @@ export default {
   // ///////////////////////////////////////
   async Signup(context, paylode) {
     await axios
-      .post('http://localhost:8081/api/new-user/sign-up', {
-        FullName: paylode.fullName,
-        email: paylode.email,
-        password: paylode.password,
-        passwordConfirm: paylode.confirmPassword,
-      })
+      .post(
+        'https://fooddeliveryservenodejs.herokuapp.com/api/new-user/sign-up',
+        {
+          FullName: paylode.fullName,
+          email: paylode.email,
+          password: paylode.password,
+          passwordConfirm: paylode.confirmPassword,
+        }
+      )
       .then(({ data }) => {
         context.commit('SignUser', data)
       })

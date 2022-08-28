@@ -4,7 +4,7 @@ const ITE = require('./../Controller/controllerItems')
 const protuct = require('./../Controller/controllerUser.js')
 
 Items.route('/restau-item')
-  .get(protuct.CheckAuth, ITE.GetItems)
+  .get(ITE.GetItems)
   .post(protuct.CheckAuth, ITE.createItem)
 Items.route('/restau-item/:id')
   .get(protuct.CheckAuth, ITE.GetItemID)
