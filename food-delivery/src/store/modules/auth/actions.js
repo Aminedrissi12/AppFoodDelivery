@@ -6,12 +6,6 @@ export default {
       .post(
         'https://fooddeliveryservenodejs.herokuapp.com/api/new-user/login',
         {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          },
-        },
-        {
           email: paylode.email,
           password: paylode.password,
         }
