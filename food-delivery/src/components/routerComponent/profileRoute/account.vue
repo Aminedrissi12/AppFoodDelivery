@@ -84,7 +84,7 @@
       <hr class="hr__btn" />
       <div class="content__account-btn">
         <div class="content__account-btn-left">
-          <button>Log out</button>
+          <button @click="logout">Log out</button>
         </div>
         <div class="content__account-btn-right">
           <button class="account-btn-right_1">Discard changes</button>
@@ -100,6 +100,12 @@
 import profileImag from '../../userProfile/profileImag.vue'
 export default {
   components: { profileImag },
+  methods: {
+    logout() {
+      localStorage.removeItem('_tk')
+      this.$router.push({ path: '/login' })
+    },
+  },
 }
 </script>
 
@@ -228,6 +234,7 @@ export default {
   font-size: 1.4rem;
   line-height: 2rem;
   border-radius: 1.2rem;
+  cursor: pointer;
 }
 .content__account-btn-left > button {
   border: 1.6px solid var(--btn-logout-color);

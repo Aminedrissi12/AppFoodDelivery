@@ -44,7 +44,10 @@
             <label for="checkbox">Keep me logged in</label>
           </div>
           <div class="colm-btn">
-            <button class="btn-login">Login</button>
+            <button class="btn-login" v-if="!loading">Login</button>
+            <button class="btn-login" v-if="loading">
+              <iconLoading class="loading" />
+            </button>
             <span @click="GoToForgot">Forgot password</span>
           </div>
         </form>
@@ -62,13 +65,16 @@ import { mapGetters } from 'vuex'
 import AuthError from './../../errors/euthError.vue'
 import Logo from './../logo/logo.vue'
 import { validation } from './../../../js/validationForm'
+import iconLoading from './../../icon/iconLoading.vue'
 export default {
   components: {
     AuthError,
     Logo,
+    iconLoading,
   },
   data() {
     return {
+      loading: false,
       errors: [],
       checkbox: null,
       auth: {
@@ -102,9 +108,11 @@ export default {
       }
       // ////////////////////////////////////////// //
       if (this.auth.email && this.auth.password && !this.errors.length) {
+        this.loading = true
         await this.$store.dispatch('loginn', this.auth)
 
         if (this.error) {
+          this.loading = false
           this.errors.push(this.error)
         } else {
           this.$router.push({ path: '/' })
@@ -142,8 +150,9 @@ export default {
 .colm-1 {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   flex: 1;
+  margin: 2rem 0;
 }
 /* -------------------------colm-1-logo---------------------- */
 .colm-1-logo {
@@ -164,8 +173,6 @@ export default {
 .colm-form div {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  margin-bottom: 2rem;
 }
 .colm-form div label {
   font-size: 1.4rem;
@@ -184,6 +191,7 @@ export default {
   height: 3rem;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
 }
 .input:focus {
   border: 0.2rem solid var(--bordder-color-1);
@@ -191,6 +199,7 @@ export default {
 /* -----------------------colm-btn ----------------------------------*/
 .colm-btn {
   display: flex;
+  justify-content: center;
 }
 .btn-login {
   background-color: var(--btn-bg-color);
@@ -201,7 +210,9 @@ export default {
   color: var(--btn-colo-text);
   font-size: 1.5rem;
   cursor: pointer;
+  height: 4rem;
 }
+
 .colm-btn span {
   color: var(--text-color-span);
   font-size: 1.5rem;
