@@ -40,12 +40,15 @@ export default {
   // ///////////////////////////////////////
   async authUser(context, paylode) {
     await axios
-      .get('http://localhost:8081/api/new-user/auht-user', {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          _tk: `${paylode}`,
-        },
-      })
+      .get(
+        'https://fooddeliveryservenodejs.herokuapp.com/api/new-user/auht-user',
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            _tk: `${paylode}`,
+          },
+        }
+      )
       .then(({ data }) => {
         context.commit('logUser', data)
       })

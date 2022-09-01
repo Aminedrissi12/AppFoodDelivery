@@ -162,7 +162,7 @@ export default {
           this.loading = false
           this.pushError(this.error)
         } else {
-          this.$router.push({ path: '/' })
+          this.$router.push({ path: '/Home' })
         }
       }
     },
@@ -206,6 +206,7 @@ export default {
 /* -------------------------colm-1-logo---------------------- */
 .colm-1-logo {
   cursor: pointer;
+  margin-bottom: 10rem;
 }
 /* ------------------colm-login-text------------------------- */
 .colm-login-text {
@@ -213,6 +214,9 @@ export default {
 }
 
 /* ---------------colm-form----------------------------------- */
+.colm-form {
+  margin-bottom: 10rem;
+}
 .colm-form div {
   display: flex;
   flex-direction: column;
@@ -272,19 +276,45 @@ export default {
 }
 </style>
 
-// //////////////////media///////////////////////////
-
+///////////////////// media query //////////////////
 <style scoped>
-/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
-@media (min-width: 37.5em) {
+@media (max-width: 37.5em) {
+  .colm-form {
+    margin-bottom: 15rem;
+  }
+  .colm-signUp {
+    margin-bottom: 3rem;
+  }
 }
-/* Medium devices (landscape tablets, 768px and up (46.87) */
-@media (min-width: 46.87em) {
+/* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
+  .colm-form {
+    margin-bottom: 15rem;
+  }
+  .colm-signUp {
+    margin-bottom: 3rem;
+  }
+}
+/* Medium devices (landscape tablets, 769px and up (48.06) */
+@media screen and (min-width: 48.06em) and (max-width: 62em) {
+  .log-in-col-1 {
+    padding: 0 2rem;
+  }
+  /* .colm-1-logo, */
+  .colm-form {
+    margin-bottom: 10rem;
+  }
+  .colm-signUp {
+    margin-bottom: 3rem;
+  }
 }
 /* Large devices (laptops/desktops, 992px and up) */
-@media (min-width: 62em) {
+@media screen and (min-width: 62em) and (max-width: 75em) {
+  .log-in-col-1 {
+    padding: 0 3rem;
+  }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media screen and (min-width: 75em) {
 }
 </style>

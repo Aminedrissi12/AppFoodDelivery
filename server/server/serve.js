@@ -7,10 +7,10 @@ dontenv.config()
 const password = process.env.PASSWORD
 const use = process.env.USER_DATA
 
-const rtlMongo = `mongodb+srv://${use}:${password}@cluster0.gpxxz.mongodb.net/?retryWrites=true&w=majority`
+const urlMongo = `mongodb+srv://${use}:${password}@cluster0.gpxxz.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose
-  .connect(rtlMongo)
+  .connect(urlMongo)
   .then(() => {
     console.log('DB connections successful!')
   })

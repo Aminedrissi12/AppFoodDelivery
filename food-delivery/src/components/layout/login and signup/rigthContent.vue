@@ -62,7 +62,6 @@ export default {
   align-items: center;
   flex: 2;
   background-color: var(--bag-color-blue-log);
-
   justify-content: space-around;
 }
 
@@ -74,11 +73,7 @@ export default {
 
 .row__imag {
   width: 70rem;
-  /* background-color: red; */
-  height: 40rem;
-  /* 
-  display: flex;
-  flex-direction: row; */
+  height: 50rem;
 }
 .row__imag-1 {
   left: 4rem;
@@ -86,7 +81,6 @@ export default {
   height: 40rem;
   border-radius: 1rem;
   z-index: 100;
-  /* transform: translateX(-29rem); */
 }
 .row__imag-2 {
   top: 5rem;
@@ -95,7 +89,6 @@ export default {
   height: 26rem;
   border-radius: 1rem;
   z-index: 300;
-  /* transform: translate(3rem, 4rem); */
 }
 .row__imag-3 {
   top: 36rem;
@@ -131,6 +124,8 @@ export default {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  margin: 1rem 0;
+  justify-content: flex-end;
 }
 .reviews h1 {
   color: var(--colo-h1);
@@ -160,65 +155,80 @@ export default {
 }
 </style>
 
+///////////////////// media query //////////////////
 <style scoped>
+@media (max-width: 37.5em) {
+}
 /* Small devices (portrait tablets and large phones, 600px and up (600 / 16 = 37.5)) */
-@media (min-width: 37.5em) {
+@media screen and (min-width: 37.5em) and (max-width: 46.87em) {
 }
 /* Medium devices (landscape tablets, 768px and up (46.87) */
-@media (min-width: 46.87em) {
-  .row__imag {
-    width: 65rem;
-    height: 40rem;
+@media screen and (min-width: 46.87em) and (max-width: 62em) {
+  .colm-2 {
+    position: relative;
+    margin: 8rem 0;
   }
-  .reviews {
-    width: 65rem;
-  }
-
-  /* _______________________________ */
-
   .row__imag-1 {
-    width: 28rem;
-    height: 38rem;
+    width: 24rem;
+    height: 37rem;
+    left: 11rem;
   }
   .row__imag-2 {
-    width: 28rem;
-    height: 24rem;
+    width: 22rem;
+    height: 20rem;
   }
   .row__imag-3 {
-    width: 59rem;
+    width: 44rem;
     height: 10rem;
+    top: 32rem;
+    left: 7rem;
+  }
+  .row__imag {
+    width: 52rem;
+    height: 42rem;
+  }
+  .reviews {
+    width: 40rem;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
-@media (min-width: 62em) {
+@media screen and (min-width: 62em) and (max-width: 75em) {
   .row__imag-1 {
-    width: 29rem;
-    height: 39rem;
+    width: 23rem;
+    height: 32rem;
   }
   .row__imag-2 {
-    width: 29rem;
-    height: 25rem;
+    width: 26rem;
+    height: 21rem;
   }
   .row__imag-3 {
-    width: 61rem;
+    width: 52rem;
     height: 12rem;
+    top: 29rem;
+    left: 1rem;
+  }
+  .row__imag {
+    width: 52rem;
+    height: 34rem;
+  }
+  .reviews {
+    width: 40rem;
+    height: 18.5rem;
   }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media screen and (min-width: 75em) {
   .row__imag {
     width: 70rem;
-    height: 40rem;
+    height: 37rem;
   }
   .reviews {
-    width: 65rem;
+    width: 70rem;
+    height: 17rem;
   }
-
-  /* _______________________________ */
-
   .row__imag-1 {
-    width: 30rem;
-    height: 40rem;
+    width: 29rem;
+    height: 36rem;
   }
   .row__imag-2 {
     width: 30rem;
@@ -227,6 +237,8 @@ export default {
   .row__imag-3 {
     width: 60rem;
     height: 13rem;
+    top: 32rem;
+    left: 1rem;
   }
 }
 </style>

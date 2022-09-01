@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import RootPage from './../rootPage/RootPage.vue'
 import Home from '@/page/Home.vue'
 import Restaurants from '@/page/Restaurants.vue'
 import Deals from '@/page/Deals.vue'
@@ -18,68 +19,77 @@ import Security from '@/components/routerComponent/profileRoute/security.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'rootpage',
+    component: RootPage,
     // only authenticated users can see home
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/Restaurants',
-    name: 'Restaurants',
-    component: Restaurants,
-    // only authenticated users can see Restaurants
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/Deals',
-    name: 'Deals',
-    component: Deals,
-    // only authenticated users can see Deals
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/MyOrders',
-    name: 'MyOrders',
-    component: MyOrders,
-    // only authenticated users can see MyOrders
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/Profile',
-    redirect: '/Profile/account',
-    name: 'Profile',
-    component: Profile,
-    // only authenticated users can see Profile
     meta: { requiresAuth: true },
     children: [
       {
-        path: '/Profile/account',
-        name: 'Account',
-        component: Account,
+        path: '/Home',
+        name: 'Home',
+        component: Home,
+        // only authenticated users can see home
+        meta: { requiresAuth: true },
       },
       {
-        path: '/Profile/address',
-        name: 'Address',
-        component: Address,
+        path: '/Restaurants',
+        name: 'Restaurants',
+        component: Restaurants,
+        // only authenticated users can see Restaurants
+        meta: { requiresAuth: true },
       },
       {
-        path: '/Profile/payment',
-        name: 'Payment',
-        component: Payment,
+        path: '/Deals',
+        name: 'Deals',
+        component: Deals,
+        // only authenticated users can see Deals
+        meta: { requiresAuth: true },
       },
       {
-        path: '/Profile/security',
-        name: 'Security',
-        component: Security,
+        path: '/MyOrders',
+        name: 'MyOrders',
+        component: MyOrders,
+        // only authenticated users can see MyOrders
+        meta: { requiresAuth: true },
+      },
+      {
+        path: '/Profile',
+        redirect: '/Profile/account',
+        name: 'Profile',
+        component: Profile,
+        // only authenticated users can see Profile
+        meta: { requiresAuth: true },
+        children: [
+          {
+            path: '/Profile/account',
+            name: 'Account',
+            component: Account,
+          },
+          {
+            path: '/Profile/address',
+            name: 'Address',
+            component: Address,
+          },
+          {
+            path: '/Profile/payment',
+            name: 'Payment',
+            component: Payment,
+          },
+          {
+            path: '/Profile/security',
+            name: 'Security',
+            component: Security,
+          },
+        ],
+      },
+      {
+        path: '/MyCart',
+        name: 'MyCart',
+        component: MyCart,
+        // only authenticated users can see MyCart
+        meta: { requiresAuth: true },
       },
     ],
-  },
-  {
-    path: '/MyCart',
-    name: 'MyCart',
-    component: MyCart,
-    // only authenticated users can see MyCart
-    meta: { requiresAuth: true },
   },
   {
     path: '/Login',

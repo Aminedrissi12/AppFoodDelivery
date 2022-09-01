@@ -80,7 +80,7 @@ export default {
       mobilNavSherch: true,
       windowWidth: null,
       url: {
-        home: '/',
+        home: '/Home',
         Restaurants: '/Restaurants',
         Deals: '/Deals',
         MyOrders: '/MyOrders',
