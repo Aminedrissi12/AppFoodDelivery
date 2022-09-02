@@ -1,16 +1,21 @@
 <template>
   <div>
-    <img :src="userImag" alt="profail" />
+    <img :src="img" alt="profail" v-if="img" />
+    <img :src="userImag" alt="profail" v-if="!img" />
   </div>
 </template>
 
 <script>
 export default {
+  props: ['img'],
   data() {
     return {
       userImag:
-        'https://lh3.googleusercontent.com/a-/AFdZucr1XZqzQ1_ahO93E3MiqPYYsT-lcXd1JCjejIVjXg=s378-p-rw-no',
+        'https://firebasestorage.googleapis.com/v0/b/find-coachse.appspot.com/o/profileImage%2F1662133016714-WhatsApp%20Image%202022-05-22%20at%204.42.19%20PM.jpeg?alt=media&token=b8c69e41-5589-4b97-a750-0a64a28ab22e',
     }
+  },
+  created() {
+    console.log(this.img)
   },
 }
 </script>

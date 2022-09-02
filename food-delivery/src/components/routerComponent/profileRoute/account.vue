@@ -8,10 +8,20 @@
       <!-- -- -->
       <div class="content__account-profile">
         <div class="content__account-profile-img">
-          <profile-imag></profile-imag>
+          <profile-imag :img="urlImg"></profile-imag>
         </div>
         <div>
-          <span class="content__account-profile-Change">Change</span>
+          <input
+            type="file"
+            name=""
+            style="display: none"
+            ref="fileInput"
+            accept="image/*"
+            @change="onFile"
+          />
+          <span class="content__account-profile-Change" @click="uloadeImag"
+            >Change</span
+          >
           <span class="content__account-profile-Remove">Remove</span>
         </div>
       </div>
@@ -98,12 +108,54 @@
 
 <script>
 import profileImag from '../../userProfile/profileImag.vue'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { storage } from './../../../firebase/config'
+
 export default {
+  data() {
+    return {
+      urlImg: null,
+      File: null,
+    }
+  },
   components: { profileImag },
   methods: {
     logout() {
       localStorage.removeItem('_tk')
       this.$router.push({ path: '/login' })
+    },
+    // //////////////////////////////////
+    uloadeImag() {
+      this.$refs.fileInput.click()
+    },
+    // //////////////////////////////////
+    async onFile(event) {
+      this.File = event.target.files[0]
+      // this is to load image on the UI
+      // .. not related to file upload :)
+      const fr = new FileReader()
+      fr.readAsDataURL(this.File)
+      fr.addEventListener('load', () => {
+        // this is to load image on the UI
+        // .. not related to file upload :)
+        this.urlImg = fr.result
+      })
+
+      // create name image
+      const filePath = `${Date.now()}-${this.File.name}`
+
+      // Create a child reference
+      const imagesRef = ref(storage, `profileImage/${filePath}`)
+
+      // Upload the file and
+      await uploadBytes(imagesRef, this.File).then((vl) => {
+        console.log(vl)
+      })
+      // gte Download url
+      getDownloadURL(imagesRef).then((url) => {
+        console.log(url)
+        this.urlImg = url
+      })
     },
   },
 }

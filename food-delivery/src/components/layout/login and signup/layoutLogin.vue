@@ -171,9 +171,9 @@ export default {
   font-size: 1.5rem;
 }
 /* ---------------colm-form----------------------------------- */
-.colm-form {
-  /* margin-bottom: 10rem; */
-}
+/* .colm-form {
+  margin-bottom: 10rem;
+} */
 .colm-form div {
   display: flex;
   flex-direction: column;
