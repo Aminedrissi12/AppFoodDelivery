@@ -19,10 +19,12 @@ import Security from '@/components/routerComponent/profileRoute/security.vue'
 const routes = [
   {
     path: '/',
+    redirect: '/Home',
     name: 'rootpage',
     component: RootPage,
     // only authenticated users can see home
     meta: { requiresAuth: true },
+    props: true,
     children: [
       {
         path: '/Home',
@@ -59,6 +61,7 @@ const routes = [
         component: Profile,
         // only authenticated users can see Profile
         meta: { requiresAuth: true },
+        props: true,
         children: [
           {
             path: '/Profile/account',
@@ -144,11 +147,9 @@ router.beforeEach(async (to, _, next) => {
   const token = localStorage._tk
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    console.log('check if token = true')
     // check if token = true
     if (!token) {
       // go to ALL router
-      console.log('go to ALL router')
       next('/Login')
     } else {
       next()

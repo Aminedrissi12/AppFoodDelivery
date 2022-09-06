@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       userImag:
-        'https://firebasestorage.googleapis.com/v0/b/find-coachse.appspot.com/o/profileImage%2F1662133016714-WhatsApp%20Image%202022-05-22%20at%204.42.19%20PM.jpeg?alt=media&token=b8c69e41-5589-4b97-a750-0a64a28ab22e',
+        'https://firebasestorage.googleapis.com/v0/b/find-coachse.appspot.com/o/profileImage%2F1662140421724-image.jpg?alt=media&token=be3242cb-0fe7-41dd-a035-2c8b0f2cf9f8',
     }
   },
   created() {

@@ -42,7 +42,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      phone: '',
+    }
+  },
+}
 </script>
 
 <style scoped>

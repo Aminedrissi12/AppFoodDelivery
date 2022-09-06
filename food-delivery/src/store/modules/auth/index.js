@@ -7,9 +7,7 @@ export default {
     return {
       token: localStorage._tk,
       error: null,
-      id: null,
-      useName: null,
-      validation: false,
+      user: null,
     }
   },
   mutations,

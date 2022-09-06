@@ -9,7 +9,7 @@
       <!-- ------- -->
       <div class="content__link">
         <ul v-for="link in links" :key="link.name">
-          <router-link :to="link.path" class="content__link-router">
+          <router-link :to="link.linkTo" class="content__link-router">
             <div class="content__link-icon">
               <mdicon :name="link.icon" class="content__icon" />
             </div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
@@ -39,28 +41,44 @@ export default {
           icon: 'account-outline',
           name: 'Account',
           descr: 'Personal information',
-          path: '/Profile/account',
+          linkTo: {
+            path: '/Profile/account',
+            name: 'Account',
+            params: { id: this.User },
+          },
         },
         {
           icon: 'map-marker-outline',
           name: 'Address',
           descr: 'Shippings addresses',
-          path: '/Profile/address',
+          linkTo: {
+            name: 'Address',
+            params: { id: this.User },
+          },
         },
         {
           icon: 'credit-card-outline',
           name: 'Payment method',
           descr: 'Connected credit cards',
-          path: '/Profile/payment',
+          linkTo: {
+            name: 'Payment',
+            params: { id: this.User },
+          },
         },
         {
           icon: 'shield-outline',
           name: 'Security',
           descr: 'Password, 2FA',
-          path: '/Profile/security',
+          linkTo: {
+            name: 'Security',
+            params: { id: this.User },
+          },
         },
       ],
     }
+  },
+  computed: {
+    ...mapGetters(['User']),
   },
 }
 </script>

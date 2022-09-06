@@ -8,7 +8,7 @@
       <!-- -- -->
       <div class="content__account-profile">
         <div class="content__account-profile-img">
-          <profile-imag :img="urlImg"></profile-imag>
+          <profile-imag :img="this.userProfile.Urlphoto"></profile-imag>
         </div>
         <div>
           <input
@@ -27,27 +27,47 @@
       </div>
       <!--/////////////////////////////////////////////////-->
       <div>
-        <form class="content__account-form">
+        <form class="content__account-form" @submit.prevent="SaveChanges">
           <!-- ------------------- -->
           <div class="content__account-row">
             <div>
               <label for="Country">First name</label>
-              <input type="text" name="FirstName" />
+              <input
+                type="text"
+                name="FirstName"
+                v-model="userProfile.firstName"
+                @blur="chickfirstName"
+              />
             </div>
             <div>
               <label for="State">Last name</label>
-              <input type="text" name="LastName" />
+              <input
+                type="text"
+                name="LastName"
+                v-model="userProfile.lastName"
+                @blur="chicklastName"
+              />
             </div>
           </div>
           <!-- ------------------- -->
           <div class="content__account-row">
             <div>
               <label for="Country">Email</label>
-              <input type="text" name="Email" />
+              <input
+                type="text"
+                name="Email"
+                v-model="userProfile.Email"
+                @blur="chickEmail"
+              />
             </div>
             <div>
               <label for="State">Phone number</label>
-              <input type="text" name="PhoneNumber" />
+              <input
+                type="text"
+                name="PhoneNumber"
+                v-model="userProfile.PhoneNumber"
+                @blur="chickPhoneNumber"
+              />
             </div>
           </div>
           <!-- ------------------- -->
@@ -97,8 +117,19 @@
           <button @click="logout">Log out</button>
         </div>
         <div class="content__account-btn-right">
-          <button class="account-btn-right_1">Discard changes</button>
-          <button class="account-btn-right_2">Save changes</button>
+          <button class="account-btn-right_1" @click="cansalChange">
+            Discard changes
+          </button>
+          <button class="account-btn-right_3" v-if="!change">
+            Save changes
+          </button>
+          <button
+            class="account-btn-right_2"
+            v-if="change"
+            @click="SaveChanges"
+          >
+            Save changes
+          </button>
         </div>
       </div>
     </div>
@@ -110,15 +141,50 @@
 import profileImag from '../../userProfile/profileImag.vue'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { storage } from './../../../firebase/config'
+import { mapGetters } from 'vuex'
+import axios from 'axios'
 
 export default {
   data() {
     return {
-      urlImg: null,
-      File: null,
+      change: false,
+      userProfile: {
+        firstName: '',
+        lastName: '',
+        Email: '',
+        Urlphoto: '',
+        PhoneNumber: '',
+      },
     }
   },
   components: { profileImag },
+  computed: {
+    ...mapGetters(['User']),
+  },
+  created() {
+    this.userProfile.firstName = this.User.user.FullName.split(' ')[0]
+    this.userProfile.lastName = this.User.user.FullName.split(' ')[1]
+    this.userProfile.Email = this.User.user.email
+    this.userProfile.PhoneNumber = this.User.user.phone
+    this.userProfile.Urlphoto = this.User.user.photo
+  },
+  async beforeRouteEnter(to, _, next) {
+    if (to.params.id) {
+      return next()
+    } else {
+      await axios
+        .get(`${process.env.VUE_APP_URL_BACKEND}/new-user/auht-user`, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            _tk: `${localStorage._tk}`,
+          },
+        })
+        .then(({ data }) => {
+          data
+          next()
+        })
+    }
+  },
   methods: {
     logout() {
       localStorage.removeItem('_tk')
@@ -131,22 +197,10 @@ export default {
     // //////////////////////////////////
     async onFile(event) {
       this.File = event.target.files[0]
-      // this is to load image on the UI
-      // .. not related to file upload :)
-      const fr = new FileReader()
-      fr.readAsDataURL(this.File)
-      fr.addEventListener('load', () => {
-        // this is to load image on the UI
-        // .. not related to file upload :)
-        this.urlImg = fr.result
-      })
-
       // create name image
       const filePath = `${Date.now()}-${this.File.name}`
-
       // Create a child reference
       const imagesRef = ref(storage, `profileImage/${filePath}`)
-
       // Upload the file and
       await uploadBytes(imagesRef, this.File).then((vl) => {
         console.log(vl)
@@ -154,8 +208,63 @@ export default {
       // gte Download url
       getDownloadURL(imagesRef).then((url) => {
         console.log(url)
-        this.urlImg = url
+        this.change = true
+        this.userProfile.Urlphoto = url
       })
+    },
+    // ///////////////////////////////
+    async RelaodPage() {
+      await this.$store.dispatch('authUser', localStorage._tk)
+    },
+    async SaveChanges() {
+      const upDateUser = {
+        FullName: `${this.userProfile.firstName} ${this.userProfile.lastName}`,
+        email: this.userProfile.Email,
+        phone: this.userProfile.PhoneNumber,
+        photo: this.userProfile.Urlphoto,
+      }
+
+      await this.$store.dispatch('updateClientUser', upDateUser)
+    },
+    // ///////////////////////////////
+    cansalChange() {
+      this.userProfile.firstName = this.User.user.FullName.split(' ')[0]
+      this.userProfile.lastName = this.User.user.FullName.split(' ')[1]
+      this.userProfile.Email = this.User.user.email
+      this.userProfile.PhoneNumber = this.User.user.phone
+      this.userProfile.Urlphoto = this.User.user.photo
+      this.change = false
+    },
+    // ///////////////////////////////
+    chickfirstName() {
+      if (
+        this.userProfile.firstName !== this.User.user.FullName.split(' ')[0]
+      ) {
+        this.change = true
+      } else {
+        this.change = false
+      }
+    },
+    chicklastName() {
+      if (this.userProfile.lastName !== this.User.user.FullName.split(' ')[1]) {
+        this.change = true
+      } else {
+        this.change = false
+      }
+    },
+    chickEmail() {
+      if (this.userProfile.Email !== this.User.user.email) {
+        this.change = true
+      } else {
+        this.change = false
+      }
+    },
+    chickPhoneNumber() {
+      if (this.userProfile.PhoneNumber !== this.User.user.phone) {
+        this.change = true
+      } else {
+        this.change = false
+      }
     },
   },
 }
@@ -286,23 +395,33 @@ export default {
   font-size: 1.4rem;
   line-height: 2rem;
   border-radius: 1.2rem;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .content__account-btn-left > button {
   border: 1.6px solid var(--btn-logout-color);
   background-color: var(--bag-color-with);
   color: var(--btn-logout-color);
+  cursor: pointer;
 }
 .account-btn-right_1 {
   border: 1.6px solid var(--btn-navbar-color);
   background-color: var(--bag-color-with);
   color: var(--btn-navbar-color);
+  cursor: pointer;
 }
 .account-btn-right_2 {
   margin-left: 1.5rem;
   border: 1.6px solid var(--bordder-color-1);
   background-color: var(--btn-bg-color);
   color: var(--btn-colo-text);
+  cursor: pointer;
+}
+.account-btn-right_3 {
+  margin-left: 1.5rem;
+  border: none;
+  background-color: var(--bag-color-with-1);
+  color: var(--text-color1);
+  cursor: not-allowed;
 }
 </style>
 
