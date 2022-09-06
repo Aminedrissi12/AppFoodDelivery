@@ -28,8 +28,16 @@ exports.signUp = async (req, res, next) => {
       token,
       user: {
         id: NewUser._id,
-        fullName: NewUser.FullName,
+        FullName: NewUser.FullName,
         email: NewUser.email,
+        difficulty: NewUser.difficulty,
+        restaurant: NewUser.restaurant,
+        cart: NewUser.cart,
+        orders: NewUser.orders,
+        cared: NewUser.cared,
+        photo: NewUser.photo,
+        phone: NewUser.phone,
+        address: NewUser.address,
       },
     })
   } catch (error) {
@@ -73,14 +81,18 @@ exports.login = async (req, res, next) => {
       difficulty: user.difficulty,
       restaurant: user.restaurant,
       cart: user.cart,
+      cart: user.cart,
       orders: user.orders,
       cared: user.cared,
+      photo: user.photo,
+      phone: user.phone,
+      address: user.address,
     },
   })
 }
 // /////////////////////////////////////////////////////////////
 
-exports.autoAuth = (req, res, next) => {
+exports.autoAuth = (req, res) => {
   // console.log('autoAuth', req.UserID)
   const user = req.user
   let token = req.token
@@ -96,6 +108,9 @@ exports.autoAuth = (req, res, next) => {
       cart: user.cart,
       orders: user.orders,
       cared: user.cared,
+      photo: user.photo,
+      phone: user.phone,
+      address: user.address,
     },
   })
 }
@@ -104,7 +119,6 @@ exports.autoAuth = (req, res, next) => {
 exports.CheckAuth = async (req, _, next) => {
   let tokenClient = req.headers._tk
   let decoded
-
   // verify  token is in headers
 
   if (tokenClient === 'undefined') {
@@ -128,5 +142,41 @@ exports.CheckAuth = async (req, _, next) => {
       req.token = req.headers._tk
       next()
     }
+  }
+}
+// //////////////////////////////////////////////////////////////////
+
+exports.UpdateAuth = async (req, res, next) => {
+  console.log(req.body)
+  console.log('jgkfjg')
+
+  try {
+    let token = req.token
+    const resUser = await Users.findByIdAndUpdate(
+      { _id: req.UserID },
+      req.body,
+      { new: true }
+    )
+    //
+    console.log(resUser)
+    res.status(201).json({
+      status: 'OK',
+      token,
+      user: {
+        id: resUser._id,
+        FullName: resUser.FullName,
+        email: resUser.email,
+        difficulty: resUser.difficulty,
+        restaurant: resUser.restaurant,
+        cart: resUser.cart,
+        orders: resUser.orders,
+        cared: resUser.cared,
+        photo: resUser.photo,
+        phone: resUser.phone,
+        address: resUser.address,
+      },
+    })
+  } catch (err) {
+    return next(new AppError('user not found', 401))
   }
 }

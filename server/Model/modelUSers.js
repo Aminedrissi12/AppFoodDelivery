@@ -63,9 +63,12 @@ const shcemaUsers = new mongoose.Schema({
   ],
   photo: {
     type: String,
+    default:
+      'https://firebasestorage.googleapis.com/v0/b/find-coachse.appspot.com/o/profileImage%2F1662140421724-image.jpg?alt=media&token=be3242cb-0fe7-41dd-a035-2c8b0f2cf9f8',
   },
   phone: {
     type: String,
+    default: 'Number phone',
   },
   yearsBirth: {
     type: String,
